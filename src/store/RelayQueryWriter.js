@@ -480,7 +480,7 @@ class RelayQueryWriter extends RelayQueryVisitor<WriterState> {
 
     // Only broadcast an update to the range if an edge was added/changed.
     // Node-level changes will broadcast at the node ID.
-    if (isUpdate) {
+    if (isUpdate || prevLinkedIDs.length !== nextLinkedIDs.length) {
       this.recordUpdate(connectionID);
     }
   }
